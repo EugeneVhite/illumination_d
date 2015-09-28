@@ -1,0 +1,5 @@
+<%= form_tag({action: :import_xls}, multipart: true) do %>
+    <%= file_field_tag 'xls' %>
+    <%= submit_tag('Submit') %>
+<% end %>
+

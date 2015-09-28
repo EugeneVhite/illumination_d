@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IlluminationD</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if @main_page %>
+    <header id="main_page_header">
+    </header>
+<% else %>
+    <header>
+    </header>
+<% end %>
+
+<div id="header-nav">
+    <a href="#">КОНТАКТЫ</a>
+    <a href="#">О НАС</a>
+    <a href="#">ДОСТАВКА</a>
+    <%= link_to 'ГЛАВНАЯ', root_path %>
+</div>
+
+<aside>
+    <span>Тип</span>
+
+    <% @types.each do |type| %>
+      <%= link_to type.name.upcase, products_path(product: {type: type}) %>
+    <% end %>
+
+    <span>Производитель</span>
+
+    <% @manufacturers.each do |manufacturer| %>
+      <%= link_to manufacturer.name.upcase, products_path(product: {manufacturer: manufacturer}) %>
+    <% end %>
+
+</aside>
+
+
+<%= yield %>
+
+
+<footer class="modal-footer">
+    <p>Footer</p>
+</footer>
+
+</body>
+</html>

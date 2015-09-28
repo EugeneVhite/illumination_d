@@ -1,0 +1,45 @@
+// Place all the styles related to the store controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'colors';
+
+
+section#store {
+  article {
+    height: 560px;
+    background-color: $mainColor;
+    margin: 1% 0;
+
+    div.with_image {
+      width: 50%;
+    }
+
+    div.description {
+      width: 50%;
+      padding: 35px;
+    }
+  }
+
+
+
+  article:nth-child(odd) {
+    div.with_image {
+      float: left;
+    }
+
+    div.description {
+      float: right;
+    }
+  }
+
+  article:nth-child(even) {
+    div.with_image {
+      float: right;
+    }
+
+    div.description {
+      float: left;
+    }
+  }
+}

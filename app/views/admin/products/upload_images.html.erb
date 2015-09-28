@@ -1,0 +1,8 @@
+<%= @new_id %>
+
+<%= form_tag({action: :import_images}, id: 'upload_images_bitch', multipart: true)  do %>
+  <%= label_tag 'Images' %>
+  <%= file_field_tag 'image[]', multiple: true %>
+  <%= submit_tag 'Upload images' %>
+<% end %>
+
