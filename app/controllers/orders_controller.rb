@@ -10,7 +10,13 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_params)
 
+    if @order.save
+      redirect_to root_path
+    else
+      
+    end
   end
 
   def single_click
