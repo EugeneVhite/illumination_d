@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to root_path
     else
-      
+
     end
   end
 

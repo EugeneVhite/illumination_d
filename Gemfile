@@ -26,12 +26,13 @@ gem 'slim-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 #gem 'therubyracer',  platforms: :ruby
 
-gem 'rspec-rails'
-gem 'factory_girl_rails'
-gem 'capybara'
-gem 'database_cleaner'
-
-gem 'minitest', group: :test
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'minitest'
+end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
