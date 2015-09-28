@@ -10,7 +10,7 @@ default: &default
   encoding: unicode
   pool: 5
   username: illumination_user
-  password: 121gtuya1tts
+  password: ********
 
 development:
   adapter: sqlite3
