@@ -1,0 +1,21 @@
+section#cart
+  h1 Ваша корзина
+  div#content_of_cart
+    - if @products.size > 0
+      - @products.each do |product|
+        article
+          img src= product.image
+          div.item_description
+            h3 = product.name
+            p = 'Артикул: ' + product.article_number
+            span#price = product.price
+    - else
+      p#empty Кажется, в вашей корзине пока ничего нет. Скорее! Нужно немедленно исправить это!
+      hr
+      = link_to 'Каталог', products_path
+      a Уникальные предложения
+      a Календарь распродаж
+
+
+
+

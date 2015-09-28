@@ -1,0 +1,160 @@
+<section id="product">
+    <p id="notice"><%= notice %></p>
+
+    <div id="description_header">
+        <%= image_tag @product.image %>
+        <div id="short_description">
+            <div id="name_section">
+                <h3 id="name">
+                  <%= @product.name %>
+                </h3>
+                <br>
+                <span id="article_number">
+                  Артикул: <%= @product.article_number %>
+                </span>
+
+                <% unless @product.description.nil? %>
+                    <p>
+                        <span>Описание:</span>
+                        <%= @product.description %>
+                    </p>
+                <% end %>
+            </div>
+
+            <div id="buy">
+                <span id="price"><%= @product.price %></span>
+                <div id="buy_button">
+                    <%= link_to 'В корзину', add_item_to_cart_path(@product.id), remote: true %>
+                    <%= link_to 'Купить в один клик', turbo_purchase_path(@product.id) %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="detail_description">
+      <ul class="tabs">
+        <li>
+            <input type="radio" name="tabs" id="tab1" checked />
+            <label for="tab1">Детальное описание</label>
+            <div id="tab-content1" class="tab_content">
+              <table>
+                <tr>
+                  <td>Производитель</td>
+                  <td><%= @product.manufacturer.name %></td>
+                </tr>
+                <tr>
+                  <td>Страна</td>
+                  <td><%= @product.manufacturer.country.name %></td>
+                </tr>
+                <% if @product.type != nil %>
+                  <tr>
+                    <td>Тип</td>
+                    <td><%= @product.type.name %></td>
+                  </tr>
+                <% end %>
+                <% if @product.color != nil %>
+                  <tr>
+                    <td>Цвет</td>
+                    <td><%= @product.color.name %></td>
+                  </tr>
+                <% end %>
+                <% if @product.style != nil %>
+                  <tr>
+                    <td>Стиль</td>
+                    <td><%= @product.style.name %></td>
+                  </tr>
+                <% end %>
+                <% if @product.placings != nil %>
+                  <tr>
+                    <td>Рекомендуемые помещения</td>
+                    <td>
+                      <% @product.recommended_places.each do |place|%>
+                        <%= "#{place.name} " %>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+                <% if @product.remote %>
+                  <tr>
+                    <td>Дистанционное управление</td>
+                    <td>да</td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+        </li>
+        <li>
+            <input type="radio" name="tabs" id="tab2" />
+            <label for="tab2">Технические характеристики</label>
+            <div id="tab-content2" class="tab_content">
+              <table>
+                <% if @product.technical_feature.amount_of_lamps != nil %>
+                <tr>
+                  <td>Количество ламп</td>
+                  <td><%= @product.technical_feature.amount_of_lamps %></td>
+                </tr>
+                <% end %>
+
+                <% if @product.technical_feature.one_lamp_power != nil %>
+                <tr>
+                  <td>Мощность ламп</td>
+                  <td><%= @product.technical_feature.one_lamp_power.to_s + ' Вт'%></td>
+                </tr>
+                <% end %>
+
+                <% if @product.technical_feature.total_power != nil %>
+                <tr>
+                  <td>Суммарная мощность</td>
+                  <td><%= @product.technical_feature.total_power.to_s + ' Вт'%></td>
+                </tr>
+                <% end %>
+
+                <% if @product.technical_feature.width != nil %>
+                  <tr>
+                    <td>Ширина</td>
+                    <td><%= @product.technical_feature.width.to_s + ' мм' %></td>
+                  </tr>
+                <% end %>
+
+                <% if @product.technical_feature.height != nil %>
+                  <tr>
+                    <td>Высота</td>
+                    <td><%= @product.technical_feature.height.to_s + ' мм' %></td>
+                  </tr>
+                <% end %>
+
+                <% if @product.technical_feature.length != nil %>
+                  <tr>
+                    <td>Длинна</td>
+                    <td><%= @product.technical_feature.length.to_s + ' мм' %></td>
+                  </tr>
+                <% end %>
+
+                <% if @product.technical_feature.diameter != nil %>
+                  <tr>
+                    <td>Диаметр</td>
+                    <td><%= @product.technical_feature.diameter.to_s + ' мм' %></td>
+                  </tr>
+                <% end %>
+
+                <% if @product.technical_feature.cap_type != nil %>
+                  <tr>
+                    <td>Тип цокаля</td>
+                    <td><%= @product.technical_feature.cap_type %></td>
+                  </tr>
+                <% end %>
+
+                <% if @product.technical_feature.lamp_type != nil %>
+                  <tr>
+                    <td>Тип лампы</td>
+                    <td><%= @product.technical_feature.lamp_type %></td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+        </li>
+      </ul>
+    </div>
+</section>

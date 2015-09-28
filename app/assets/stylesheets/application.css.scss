@@ -1,0 +1,172 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require _bootstrap
+ *= require_self
+ */
+
+@import "colors";
+
+
+a {
+  color: $textColor;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #79cedd;
+  text-decoration: none;
+}
+
+body, html {
+  min-width: 1138px;
+  margin: 0;
+  padding: 0;
+  font-family: 'HelveticaNeueCyr-Light';
+  color: $textColor;
+}
+
+body {
+  background-color: $bodyColor;
+}
+
+h2 {
+  font: normal 40pt/40pt inherit;
+}
+
+header {
+  width: 100%;
+  margin: 0;
+  background-color: $mainColor;
+  overflow: hidden;
+  height: 100px;
+
+  border-bottom: solid 4px $mainBorderColor;
+
+  span#logo {
+    margin: 20px;
+    display: block;
+    float: left;
+    font: 80px/120px 'Helvetica';
+    a {
+      color: $textColor;
+
+    }
+  }
+
+
+}
+
+#main_page_header {
+  height: 400px;
+}
+
+#header-nav {
+
+  width: 100%;
+  margin: 0 0 2%;
+  clear: both;
+  background: $bodyColor;
+  overflow: hidden;
+  padding: 0 4%;
+
+  a {
+    float: right;
+
+    margin: 0;
+
+    display: inline-block;
+    padding: 22px 20px;
+
+
+    border-bottom: solid 1px $bodyColor;
+
+    list-style: none;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+
+
+
+  }
+  a:hover {
+    background: rgba(255,255,255,0.8);
+
+    border-bottom-color: $mainBorderColor;
+    border-radius: 0;
+  }
+
+}
+
+
+aside {
+  overflow: hidden;
+  float: left;
+  margin: 0 1%;
+  width: 20%;
+  min-height: 260px;
+  padding: 9px 0 15px;
+
+
+
+  span {
+    float:none;
+    font-size: 93%;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 7px 3% 7px;
+
+  }
+
+  a {
+    //margin: 0;
+    width: 100%;
+    display: block;
+
+    padding: 8px 8% 8px;
+    border-top: solid 1px $textColor;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+
+  a:hover {
+    background: rgba(255,255,255,0.8);
+    border-top: solid 1px $mainBorderColor;
+  }
+
+}
+
+
+section {
+  background-color: $bodyColor;
+  width: 77%;
+  margin: 0 1% 1% 22%;
+}
+
+footer {
+  background: $mainColor;
+  color: #999999;
+  clear: both;
+  overflow: hidden;
+  width: 100%;
+  bottom: 0;
+}
+

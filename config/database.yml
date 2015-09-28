@@ -1,0 +1,30 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter: postgresql
+  host: 192.168.1.12
+  encoding: unicode
+  pool: 5
+  username: illumination_user
+  password: 121gtuya1tts
+
+development:
+  adapter: sqlite3
+  encoding: unicode
+  pool: 5
+  database: illumination_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: illumination_test
+
+production:
+  <<: *default
+  database: illumination_production

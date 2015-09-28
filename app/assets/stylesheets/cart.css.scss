@@ -1,0 +1,89 @@
+// Place all the styles related to the cart controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "colors";
+
+section#cart {
+  padding: 15px;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  div#content_of_cart {
+    width: 100%;
+    min-height: 350px;
+    margin-top: 40px;
+    padding: 20px 25px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.7);
+    border-top: solid 2px $mainBorderColor;
+    border-bottom: solid 2px $mainBorderColor;
+
+    article {
+      padding-bottom: 2%;
+      overflow: hidden;
+      width: 62%;
+
+      img {
+        width: 25%;
+        float: left;
+      }
+
+      div.item_description {
+        text-align: left;
+        width: 75%;
+        padding-left: 2%;
+        overflow: hidden;
+
+        h3 {
+          margin-top: 0;
+        }
+
+        span#price {
+          display: block;
+          width: 33%;
+          padding: 11px;
+          text-align: center;
+          font-size: 23px;
+          float: right;
+          border-left: solid 1px $mainBorderColor;
+        }
+      }
+    }
+
+    article + article {
+      border-top: solid 1px $textColor;
+      padding-top: 2%;
+    }
+
+    p#empty {
+      font-family: 'HelveticaNeueCyr-UltraLight';
+      font-size: 30px;
+      margin: 50px;
+    }
+
+    hr {
+      border-color: $textColor;
+    }
+
+    a {
+      display: block;
+      float: left;
+      padding: 10px;
+      width: 33.333333%;
+      font-size: 15px;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+
+    a + a {
+      border-left: solid 1px $textColor;
+    }
+
+  }
+}
