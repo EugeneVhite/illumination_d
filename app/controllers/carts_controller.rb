@@ -3,15 +3,12 @@ class CartsController < ApplicationController
   include NavigationSideBar
   before_action :set_side_bar_categories, only: :index
   def index
-    @products = find_all_products
+    @products = CartsController::products_from_cart(self)
   end
 
   def add_item
-    session[:cart] ||= {}
 
-    session[:cart][params[:product_id]] ||= 0
-    session[:cart][params[:product_id]] += 1
-
+    CartsController::add_to_cart(self, params[:product_id])
 
     respond_to do |format|
       format.js
@@ -20,14 +17,7 @@ class CartsController < ApplicationController
   end
 
   def remove_item
-
-    amount = session[:cart][params[:product_id]]
-    if amount > 1
-      session[:cart][params[:product_id]] -= 1
-    else
-      session[:cart].except!(params[:product_id])
-    end
-
+    CartsController::remove_from_cart(self, params[:product_id])
     redirect_to carts_index_path
   end
 
@@ -37,16 +27,52 @@ class CartsController < ApplicationController
 
   # for debugging ONLY
   def pure
-    session[:cart] = nil
+    CartsController::clear_cart self
     redirect_to cart_path
   end
 
-  private
 
-  def find_all_products
+  # methods for working with clients cart
+  def self.cart(controller)
+    controller.session[:cart]
+  end
+
+  def self.set_cart (controller, cart)
+    controller.session[:cart] = cart
+  end
+
+  def self.add_to_cart(controller, product_id)
+    cart = controller.session[:cart] ||= {}
+
+    cart[product_id] ||= 0
+    cart[product_id] += 1
+
+    controller.session[:cart] = cart
+  end
+
+  def self.remove_from_cart(controller, product_id)
+    cart = controller.session[:cart]
+
+    if cart[product_id]
+      if cart[product_id] > 1
+        cart[product_id] -= 1
+      else
+        cart.except![product_id]
+      end
+    end
+
+    controller.session[:cart] = cart
+  end
+
+  def self.clear_cart(controller)
+    controller.session[:cart] = nil
+  end
+
+
+  def self.products_from_cart(controller)
     products = Array.new
-    if session[:cart]
-      session[:cart].each do |key, value|
+    if CartsController::cart(controller)
+      CartsController::cart(controller).each do |key, value|
         products << Product.find(key)
       end
     end

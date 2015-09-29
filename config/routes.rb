@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   get 'cart', to: 'carts#index'
 
-
   # for debugging only
   get 'ct/p', to: 'carts#pure'
 
@@ -24,9 +23,11 @@ Rails.application.routes.draw do
 
 
 
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :products
+  resources :orders
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

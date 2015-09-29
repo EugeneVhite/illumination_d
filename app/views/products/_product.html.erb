@@ -2,6 +2,6 @@
   <div class="content">
     <%= image_tag product.image %>
   </div>
-  <span id="price"> <%= product.price %></span>
+  <span id="price"> <%= number_to_currency product.price, unit: '₽', delimiter: ''  %></span>
   <%= link_to 'Подробнее', product %>
 </article>

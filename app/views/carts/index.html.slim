@@ -8,7 +8,7 @@ section#cart
           div.item_description
             h3 = product.name
             p = 'Артикул: ' + product.article_number
-            span#price = product.price
+            span#price = number_to_currency product.price, unit: '₽', delimiter: ''
     - else
       p#empty Кажется, в вашей корзине пока ничего нет. Скорее! Нужно немедленно исправить это!
       hr

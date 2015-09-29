@@ -1,2 +1,48 @@
-h1 Orders#new
-p Find me in app/views/orders/new.html.slim
+
+
+section#order
+  h1 Оформление заказа
+  div.form_container
+    = form_for(@order) do |f|
+      - if @order.errors.any?
+        div#error_explanation
+          h2 Что-то пошло не так...
+          ul
+            - @order.errors.full_messages.each do |msg|
+              li = msg
+
+      .field
+        == f.label 'Имя'
+        == f.text_field :name
+
+      .field
+        == f.label 'Электронная почта'
+        == f.email_field :email
+
+      .field
+        == f.label 'Номер телефона'
+        == f.phone_field :phone_number
+
+      .field
+        == f.label 'Комментарии к заказу'
+        == f.text_area :description
+
+      .action
+        == f.submit 'Оформить'
+  div.bill
+    h3 Состав заказа
+    table
+      tr
+        th наименование
+        th цена
+        th кол-во
+      - if @products
+        - @products.each do |product|
+          tr
+            td = product.name
+            td = number_to_currency product.price, unit: '₽', delimiter: ''
+            td = @cart[product.id.to_s]
+      tr#last_row
+        td Итог:
+        td
+        td

@@ -1,3 +1,153 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "colors";
+
+section#order {
+
+  background: rgba(255,255,255,0.8);
+  overflow: hidden;
+  padding: 0 3% 30px;
+
+  border-top: solid 2px $mainBorderColor;
+
+  div.form_container {
+
+    width: 50%;
+    float: left;
+    border-right: solid 1px $mainColor;
+    padding: 3% 3% 3% 0;
+
+    form {
+      div#error_explanation {
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 20px;
+        background-color: $errorColor;
+        color: white;
+
+        h2 {
+          margin-top: 0;
+          font-size: 12px;
+        }
+
+        ul{
+          margin: 0;
+          li {
+            font-size: 12px;
+          }
+        }
+      }
+
+      div.field {
+        overflow: hidden;
+        margin-bottom: 10px;
+        vertical-align: centr;
+
+        label {
+          display: inline-block;
+          float: left;
+          line-height: 1.1;
+          padding: 9px 0;
+          font-size: 15px;
+          margin: 0;
+        }
+
+        input, textarea {
+          width: 62%;
+          height: 35px;
+          float: right;
+          font-size: 15px;
+          padding: 7px 10px 8px;
+          line-height: 18px;
+
+          border: solid 1px $mainColor;
+
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          -ms-transition: all 0.3s;
+          -o-transition: all 0.3s;
+          transition: all 0.3s;
+        }
+
+        div.field_with_errors {
+          input, textarea {
+            border-color: $errorColor;
+          }
+        }
+
+        textarea {
+          height: 100px;
+        }
+
+        input:focus, textarea:focus {
+          box-shadow: none;
+          border: solid 1px $mainLightColor;
+          outline: none;
+        }
+
+      }
+
+      div.action {
+        input[type="submit"] {
+          background-color: rgba(255, 255, 255, 0);
+          border: solid 1px $mainColor;
+
+          float: right;
+          margin: 15px 0 0 15px;
+          height: 55px;
+          width: 62%;
+          line-height: 55px;
+          text-align: center;
+
+          font-size: 20px;
+
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          -ms-transition: all 0.3s;
+          -o-transition: all 0.3s;
+          transition: all 0.3s;
+        }
+
+        input:hover {
+          background-color: $mainLightColor;
+          border-color: $mainLightColor;
+          color: rgba(255, 255, 255, 0.9);
+        }
+      }
+    }
+  }
+
+  div.bill {
+    width: 45%;
+    float: right;
+
+    table {
+      padding: 3%;
+      tr {
+        th, td {
+          padding: 10px;
+        }
+
+        th {
+          padding-bottom: 3px;
+          border-bottom: solid 1px $mainColor;
+        }
+
+        td {
+
+        }
+      }
+
+      tr#last_row {
+        border-top: solid 1px $textColor;
+
+        td {
+          text-align: right;
+        }
+      }
+    }
+  }
+}

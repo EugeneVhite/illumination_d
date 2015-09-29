@@ -22,7 +22,7 @@
             </div>
 
             <div id="buy">
-                <span id="price"><%= @product.price %></span>
+                <span id="price"><%= number_to_currency @product.price, unit: '₽', delimiter: '' %></span>
                 <div id="buy_button">
                     <%= link_to 'В корзину', add_item_to_cart_path(@product.id), remote: true %>
                     <%= link_to 'Купить в один клик', turbo_purchase_path(@product.id) %>
