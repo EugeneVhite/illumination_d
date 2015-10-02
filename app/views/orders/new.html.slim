@@ -37,12 +37,12 @@ section#order
         th цена
         th кол-во
       - if @products
-        - @products.each do |product|
+        - @products.each do |id, product|
           tr
-            td = product.name
-            td = number_to_currency product.price, unit: '₽', delimiter: ''
-            td = @cart[product.id.to_s]
+            td = product['name']
+            td = number_to_currency product['price'], unit: '₽ ', delimiter: ''
+            td = product['amount']
       tr#last_row
         td Итог:
-        td
+        td = number_to_currency cart_total_price, unit: '₽ ', delimiter: ''
         td

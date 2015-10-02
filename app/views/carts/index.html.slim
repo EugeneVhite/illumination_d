@@ -1,15 +1,16 @@
-section#cart
-  h1 Ваша корзина
-  div#content_of_cart
-    - if @products.size > 0
-      - @products.each do |product|
-        article
-          img src= product.image
-          div.item_description
-            h3 = product.name
-            p = 'Артикул: ' + product.article_number
-            span#price = number_to_currency product.price, unit: '₽', delimiter: ''
-    - else
+h1 Ваша корзина
+- if @products.size > 0
+  /- @products.each do |product|
+  /  article
+  /    img src= product.image
+  /    div.item_description
+  /      h3 = product.name
+  /      p = 'Артикул: ' + product.article_number
+  /      span#price = number_to_currency product.price, unit: '₽', delimiter: ''
+  = react_component 'Cart', {data: @products}, { tag: 'section', id: 'cart' }
+- else
+  section#cart
+    div#content_of_cart
       p#empty Кажется, в вашей корзине пока ничего нет. Скорее! Нужно немедленно исправить это!
       hr
       = link_to 'Каталог', products_path

@@ -5,10 +5,11 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.7'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-
 gem 'pg'
+
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
+
 gem 'roo', '~> 2.1.0'
 gem 'jquery-fileupload-rails'
 gem 'react-rails'
@@ -25,6 +26,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'slim-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 #gem 'therubyracer',  platforms: :ruby
+
+group :development do
+  gem 'capistrano'
+end
 
 group :test do
   gem 'rspec-rails'

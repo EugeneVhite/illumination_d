@@ -38,7 +38,8 @@ class OrdersController < ApplicationController
 
   def single_click
     session[:old_cart] = CartsController::cart(self)
-    CartsController::set_cart self, { product_params[:product_id] => 1 }
+    CartsController::clear_cart(self)
+    CartsController::add_to_cart self, product_params[:product_id]
     redirect_to orders_new_path
   end
 

@@ -7,24 +7,29 @@
 section#cart {
   padding: 15px;
 
-  h1 {
-    margin-bottom: 10px;
-  }
-
   div#content_of_cart {
     width: 100%;
     min-height: 350px;
     margin-top: 40px;
     padding: 20px 25px;
     text-align: center;
+    overflow: hidden;
     background-color: rgba(255,255,255,0.7);
     border-top: solid 2px $mainBorderColor;
     border-bottom: solid 2px $mainBorderColor;
 
+    h1 {
+      margin-top: 10px;
+      text-align: left;
+    }
+
     article {
       padding-bottom: 2%;
+      margin-right: 2%;
       overflow: hidden;
       width: 62%;
+      float: left;
+      clear: none;
 
       img {
         width: 25%;
@@ -39,6 +44,12 @@ section#cart {
 
         h3 {
           margin-top: 0;
+          a {
+            display: inline;
+            font-size: inherit;
+            float: none;
+            padding: 0;
+          }
         }
 
         span#price {
@@ -49,6 +60,49 @@ section#cart {
           font-size: 23px;
           float: right;
           border-left: solid 1px $mainBorderColor;
+          margin-left: 5%;
+        }
+
+        span.amount {
+          display: block;
+          padding: 20px 3px;
+          line-height: 20px;
+          float: right;
+          font-size: 17px;
+
+        }
+
+        button {
+          float: right;
+          color: $mainLightColor;
+          background: none;
+          border: 1px solid white;
+          margin: 16px 3px;
+          padding: 1px 6px 0;
+          border-radius: 13px;
+          font-family: math;
+          font-size: 17px;
+
+
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          -ms-transition: all 0.3s;
+          -o-transition: all 0.3s;
+          transition: all 0.3s;
+        }
+
+        button:hover {
+          color: rgba(255,255,255,0.8);
+          background-color: $mainBorderColor;
+        }
+
+        button:active {
+          background-color: $mainLightColor;
+          -webkit-transition: all 0.0s;
+          -moz-transition: all 0.0s;
+          -ms-transition: all 0.0s;
+          -o-transition: all 0.0s;
+          transition: all 0.0s;
         }
       }
     }
@@ -85,5 +139,32 @@ section#cart {
       border-left: solid 1px $textColor;
     }
 
+  }
+
+  div.bill {
+    margin: 0 0 0 63%;
+    width: 36%;
+    background-color: $bodyColor;
+    //border-bottom: 1px solid $textColor;
+    overflow: hidden;
+    padding: 2%;
+    text-align: left;
+
+    h3 {
+      float: right;
+    }
+
+    a#order {
+      display: block;
+      width: 100%;
+      border: solid 1px $mainColor;
+      text-align: center;
+    }
+
+    a#order:hover {
+      background-color: $mainLightColor;
+      border-color: $mainLightColor;
+      color: rgba(255,255,255,0.8);
+    }
   }
 }
