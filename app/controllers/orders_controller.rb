@@ -2,10 +2,7 @@ class OrdersController < ApplicationController
   include NavigationSideBar
 
   before_action :set_side_bar_categories, only: [:index, :new, :create, :single_click]
-
-
-  def index
-  end
+  
 
   def new
     @order = Order.new

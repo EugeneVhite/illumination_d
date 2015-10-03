@@ -18,8 +18,81 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe ProductsController do
+describe ProductsController, type: :controller do
 
+  describe 'GET index' do
+    it 'populates array of products' do
+      first_product = create(:product)
+      second_product = create(:product)
+      array_of_created_products = Array.new
+
+      array_of_created_products << first_product
+      array_of_created_products << second_product
+
+      get :index
+
+      assigns(:products).should eq(array_of_created_products)
+    end
+
+
+    it 'should filter products' do
+      first_product = create(:product)
+      second_product = create(:product)
+
+      manufacturer = create(:manufacturer)
+      type = create(:type)
+
+      first_product.manufacturer = manufacturer
+      first_product.save
+      second_product.type = type
+      second_product.save
+
+      get :index, { product: {type: type} }
+
+      assigns(:products).should eq([second_product])
+    end
+
+    it 'renders :index template' do
+      get 'index'
+      response.should render_template :index
+    end
+  end
+
+  describe 'GET show' do
+    it 'assigns requested product to @product' do
+      product = create(:product)
+
+      get :show, id: product
+      assigns(:product).should eq(product)
+    end
+  end
+
+
+  # in fact, it tests functionality of all controllers
+  # with NavigationSideBar concern (with 'include NavigationSideBar' string)
+  describe 'navigation bar' do
+    it 'populates array of types' do
+      product = create(:product)
+      type = create(:type)
+
+      product.type = type
+      product.save
+
+      get :index
+      assigns(:types).should eq([type])
+    end
+
+    it 'populates array of manufacturers' do
+      product = create(:product)
+      manufacturer = create(:manufacturer)
+
+      product.manufacturer = manufacturer
+      product.save
+
+      get :index
+      assigns(:manufacturers).should eq([manufacturer])
+    end
+  end
 
 
 end

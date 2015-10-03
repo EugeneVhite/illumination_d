@@ -6,6 +6,7 @@ FactoryGirl.define do
     article_number "AE-123523"
     remote false
 
+
     factory :product_for_color do
       color
     end

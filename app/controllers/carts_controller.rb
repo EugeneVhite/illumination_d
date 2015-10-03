@@ -9,7 +9,7 @@ class CartsController < ApplicationController
 
   def add_item
 
-    CartsController::add_to_cart(self, params[:product_id])
+    CartsController::add_to_cart(self, params[:product_id].to_i)
 
     respond_to do |format|
       format.js
@@ -18,7 +18,7 @@ class CartsController < ApplicationController
   end
 
   def remove_item
-    CartsController::remove_from_cart(self, params[:product_id])
+    CartsController::remove_from_cart(self, params[:product_id].to_i)
     respond_to do |format|
       format.json { render nothing: true }
     end
@@ -36,7 +36,8 @@ class CartsController < ApplicationController
   end
 
 
-  # methods for working with clients cart
+
+  # class methods for work with clients cart
   def self.cart(controller)
     controller.session[:cart]
   end
@@ -74,13 +75,16 @@ class CartsController < ApplicationController
 
 
   def self.products_from_cart(controller)
-    products = Hash.new
+    products = { }
     if CartsController::cart(controller)
       CartsController::cart(controller).each do |key, value|
         product = Product.find(key)
 
-        cart_item = product.slice(:name, :article_number, :price)
-        cart_item[:amount] = value['amount']
+        cart_item = { }
+        cart_item[:name] = product.name
+        cart_item[:article_number] = product.article_number
+        cart_item[:price] = product.price
+        cart_item['amount'] = value['amount']
         cart_item[:image_url] = product.image.url
 
         products[key] = cart_item
@@ -91,8 +95,9 @@ class CartsController < ApplicationController
 
   def self.total_price(controller)
     sum = 0
-    CartsController::cart(controller).each { |id, item| sum += item['price'].to_d * item['amount'] }
+    CartsController::cart(controller).each { |id, item| sum += item[:price].to_d * item['amount'] }
     sum
   end
+
 
 end

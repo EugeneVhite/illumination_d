@@ -1,11 +1,15 @@
 require 'spec_helper'
 
-describe StoreController do
+describe StoreController, type: :controller do
 
   describe "GET 'index'" do
-    it "returns http success" do
-      get 'index'
-      response.should be_success
+    it "renders the :index view" do
+      get :index
+      response.should render_template :index
+    end
+
+    it 'populates array of articles' do
+
     end
   end
 

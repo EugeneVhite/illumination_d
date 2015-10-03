@@ -1,5 +1,5 @@
 @toCurrency = (floatValue) ->
-  '₽' + Number(floatValue).toLocaleString()
+  '₽ ' + Number(floatValue).toLocaleString()
 
 @toOrderPage = ->
   '/orders/new'

@@ -10,8 +10,8 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     # TODO: implement search
-    if params[:product]
-      @products = filter_products(params[:product]) # app/controllers/concerns/filter_products.rb
+    if product_params != {}
+      @products = filter_products(product_params[:product]) # app/controllers/concerns/filter_products.rb
     else
       @products = Product.all
     end
@@ -27,7 +27,6 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-
   end
 
   private
@@ -38,6 +37,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :price, :article_number, :remote_control, :color)
+      params.permit(:product => [:name, :price, :color, :manufacturer, :type, :style] )
     end
 end
