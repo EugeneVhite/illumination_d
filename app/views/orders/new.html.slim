@@ -40,9 +40,9 @@ section#order
         - @products.each do |id, product|
           tr
             td = product['name']
-            td = number_to_currency product['price'], unit: '₽ ', delimiter: ''
+            td = to_russian_currency(product['price'])
             td = product['amount']
       tr#last_row
         td Итог:
-        td = number_to_currency cart_total_price, unit: '₽ ', delimiter: ''
+        td = to_russian_currency(cart_total_price)
         td

@@ -33,7 +33,7 @@ a {
 }
 
 a:hover {
-  color: #79cedd;
+  color: $hoveredLinkColor;
   text-decoration: none;
 }
 
@@ -69,7 +69,6 @@ header {
     font: 80px/120px 'Helvetica';
     a {
       color: $textColor;
-
     }
   }
 
@@ -91,16 +90,12 @@ header {
 
   a {
     float: right;
-
     margin: 0;
-
     display: inline-block;
     padding: 22px 20px;
 
-
     border-bottom: solid 1px $bodyColor;
 
-    list-style: none;
 
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;

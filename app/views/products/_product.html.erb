@@ -1,7 +1,9 @@
 <article>
+  <h3><%= first_two_words_of product.name %></h3>
+  <p><%= product.article_number %></p>
   <div class="content">
     <%= image_tag product.image %>
   </div>
-  <span id="price"> <%= number_to_currency product.price, unit: '₽', delimiter: ''  %></span>
+  <span id="price"> <%= to_russian_currency(product.price)%></span>
   <%= link_to 'Подробнее', product %>
 </article>
