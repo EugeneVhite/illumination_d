@@ -95,7 +95,7 @@ class CartsController < ApplicationController
 
   def self.total_price(controller)
     sum = 0
-    CartsController::cart(controller).each { |id, item| sum += item[:price].to_d * item['amount'] }
+    CartsController::cart(controller).each { |id, item| sum += item['price'].to_d * item['amount'] }
     sum
   end
 

@@ -39,9 +39,9 @@ section#order
       - if @products
         - @products.each do |id, product|
           tr
-            td = product['name']
-            td = to_russian_currency(product['price'])
-            td = product['amount']
+            td = product[:name]
+            td = to_russian_currency(product[:price])
+            td = product[:amount]
       tr#last_row
         td Итог:
         td = to_russian_currency(cart_total_price)

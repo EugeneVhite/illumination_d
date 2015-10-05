@@ -23,3 +23,4 @@
 illumination_development
 app/assets/stylesheets/fonts/
 
+config/database.yml
