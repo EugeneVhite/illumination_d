@@ -18,7 +18,7 @@
 /*.xls
 /public/uploads/
 
-.idea/
+/.idea/
 
 illumination_development
 app/assets/stylesheets/fonts/
